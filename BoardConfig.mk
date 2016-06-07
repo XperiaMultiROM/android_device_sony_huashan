@@ -1,4 +1,5 @@
-# Copyright (C) 2015-2016 The CyanogenMod Project
+#
+# Copyright (C) 2013-2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,6 +12,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
+
+# Board device path
+DEVICE_PATH := device/sony/huashan
 
 # Board Vendor
 BOARD_VENDOR := sony
@@ -34,7 +39,7 @@ TARGET_CPU_VARIANT := krait
 # Kernel properties
 TARGET_KERNEL_SOURCE := kernel/sony/msm8960t
 TARGET_KERNEL_CONFIG := cm_viskan_huashan_defconfig
-TARGET_PREBUILT_KERNEL := device/sony/huashan/prebuilts/kernel
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/kernel
 
 # Kernel configurations
 BOARD_KERNEL_BASE  := 0x80200000
@@ -54,7 +59,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
 
 # Custom boot
 BOARD_CUSTOM_BOOTIMG := true
-BOARD_CUSTOM_BOOTIMG_MK := device/sony/huashan/customrecoveryimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/boot/custombootimg.mk
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 
 # Recovery
@@ -68,7 +73,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 # TWRP configurations
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 RECOVERY_SDCARD_ON_DATA := true
-TARGET_RECOVERY_FSTAB := device/sony/huashan/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 TW_BRIGHTNESS_PATH := /sys/devices/i2c-10/10-0040/leds/lcd-backlight1/brightness
 TW_SECONDARY_BRIGHTNESS_PATH := /sys/devices/i2c-10/10-0040/leds/lcd-backlight2/brightness
 TW_CRYPTO_FS_FLAGS := "0x00000406"
@@ -94,11 +99,11 @@ TW_THEME := portrait_hdpi
 
 # MultiROM configuration
 MR_INPUT_TYPE := type_b
-MR_INIT_DEVICES := device/sony/huashan/multirom/mr_init_devices.c
+MR_INIT_DEVICES := $(DEVICE_PATH)/multirom/mr_init_devices.c
 MR_ALLOW_NKK71_NOKEXEC_WORKAROUND := true
 MR_DPI := hdpi
 MR_DPI_FONT := 216
-MR_FSTAB := device/sony/huashan/recovery.fstab
+MR_FSTAB := $(DEVICE_PATH)/recovery.fstab
 MR_USE_MROM_FSTAB := true
 MR_KEXEC_MEM_MIN := 0x85000000
 MR_DEVICE_VARIANTS := C5302 C5303 C5306
