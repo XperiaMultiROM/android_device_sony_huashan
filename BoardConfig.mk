@@ -109,6 +109,14 @@ MR_KEXEC_MEM_MIN := 0x85000000
 MR_DEVICE_VARIANTS := C5302 C5303 C5306
 MR_UNIFIED_TABS := true
 
+# MultiROM versioning
+ifeq ($(MR_REC_VERSION),)
+MR_REC_VERSION := $(shell date -u +%Y%m%d)
+endif
+
+# MultiROM version tag
+BOARD_KERNEL_NAME := mrom$(MR_REC_VERSION)
+
 # MultiROM build
 DEVICE_RESOLUTION := 720x1280
 TARGET_RECOVERY_IS_MULTIROM := true
